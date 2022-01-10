@@ -20,7 +20,7 @@ public class TileManager
     {
         this.gp = gp;
 
-        tile = new Tile[10];
+        tile = new Tile[30];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
@@ -31,6 +31,7 @@ public class TileManager
     {
         try
         {
+            //______________________________________ Generic Stuff___________________________________________________________
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass.png")));
 
@@ -48,6 +49,81 @@ public class TileManager
 
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/sand.png")));
+            //____________________________________________________________________________________________________________
+
+
+            //______________________________________ Big Tree ___________________________________________________________
+            tile[6] = new Tile();
+            tile[6].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_nw.png")));
+
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_ne.png")));
+
+            tile[8] = new Tile();
+            tile[8].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_sw.png")));
+
+            tile[9] = new Tile();
+            tile[9].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_se.png")));
+            //________________________________________________________________________________________________________________
+
+
+            //______________________________________ Road _______________________________________________________________
+            tile[10] = new Tile();
+            tile[10].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/dirt_patch.png")));
+            //____________________________________________________________________________________________________________
+
+            //______________________________________ Grass Edges _______________________________________________________________
+            tile[11] = new Tile();
+            tile[11].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_down.png")));
+
+            tile[12] = new Tile();
+            tile[12].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_left.png")));
+
+            tile[13] = new Tile();
+            tile[13].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_ne.png")));
+
+            tile[14] = new Tile();
+            tile[14].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_nw.png")));
+
+            tile[15] = new Tile();
+            tile[15].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_right.png")));
+
+            tile[16] = new Tile();
+            tile[16].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_se.png")));
+
+            tile[17] = new Tile();
+            tile[17].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_sw.png")));
+
+            tile[18] = new Tile();
+            tile[18].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_up.png")));
+
+            tile[19] = new Tile();
+            tile[19].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall.png")));
+
+            tile[20] = new Tile();
+            tile[20].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_left.png")));
+
+            tile[21] = new Tile();
+            tile[21].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_right.png")));
+
+            tile[22] = new Tile();
+            tile[22].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_down.png")));
+            //____________________________________________________________________________________________________________
+
+            //______________________________________ Grass Accesories____________________________________________________
+
+            tile[23] = new Tile();
+            tile[23].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_flower.png")));
+
+            tile[24] = new Tile();
+            tile[24].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_flower2.png")));
+
+            tile[25] = new Tile();
+            tile[25].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_rock.png")));
+
+            tile[26] = new Tile();
+            tile[26].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_trunk.png")));
+            //____________________________________________________________________________________________________________
 
         }catch(IOException e) { e.printStackTrace(); }
     }
@@ -100,7 +176,10 @@ public class TileManager
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-            if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && worldX - gp.tileSize < gp.player.worldX + gp.player.screenX && worldY + gp.tileSize> gp.player.worldY - gp.player.screenY && worldY - gp.tileSize< gp.player.worldY + gp.player.screenY)
+            if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+               worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+               worldY + gp.tileSize> gp.player.worldY - gp.player.screenY &&
+               worldY - gp.tileSize< gp.player.worldY + gp.player.screenY)
             {
                 g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
             }
