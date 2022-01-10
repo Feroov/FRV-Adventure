@@ -13,8 +13,8 @@ import java.util.Objects;
 public class TileManager
 {
     GamePanel gp;
-    Tile[] tile;
-    int mapTileNum[][];
+    public Tile[] tile;
+    public int mapTileNum[][];
 
     public TileManager(GamePanel gp)
     {
@@ -37,12 +37,15 @@ public class TileManager
 
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/wall.png")));
+            tile[1].collision = true;
 
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/water.png")));
+            tile[2].collision = true;
 
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/tree.png")));
+            tile[3].collision = true;
 
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/dirt.png")));
@@ -55,15 +58,19 @@ public class TileManager
             //______________________________________ Big Tree ___________________________________________________________
             tile[6] = new Tile();
             tile[6].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_nw.png")));
+            tile[6].collision = true;
 
             tile[7] = new Tile();
             tile[7].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_ne.png")));
+            tile[7].collision = true;
 
             tile[8] = new Tile();
             tile[8].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_sw.png")));
+            tile[8].collision = true;
 
             tile[9] = new Tile();
             tile[9].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_se.png")));
+            tile[9].collision = true;
             //________________________________________________________________________________________________________________
 
 
@@ -99,15 +106,19 @@ public class TileManager
 
             tile[19] = new Tile();
             tile[19].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall.png")));
+            tile[19].collision = true;
 
             tile[20] = new Tile();
             tile[20].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_left.png")));
+            tile[20].collision = true;
 
             tile[21] = new Tile();
             tile[21].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_right.png")));
+            tile[21].collision = true;
 
             tile[22] = new Tile();
             tile[22].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_down.png")));
+            tile[22].collision = true;
             //____________________________________________________________________________________________________________
 
             //______________________________________ Grass Accesories____________________________________________________
@@ -123,6 +134,7 @@ public class TileManager
 
             tile[26] = new Tile();
             tile[26].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_trunk.png")));
+            tile[26].collision = true;
             //____________________________________________________________________________________________________________
 
         }catch(IOException e) { e.printStackTrace(); }
