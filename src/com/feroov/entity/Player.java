@@ -39,7 +39,7 @@ public class Player extends Entity
     {
         worldX = gp.tileSize * 43;
         worldY = gp.tileSize * 51;
-        speed = 19;
+        speed = 4;
         direction = "left";
     }
 
@@ -101,17 +101,21 @@ public class Player extends Entity
             }
 
             spriteCounter++;
-            if(spriteCounter > 12)
-            {
-                if(spriteNum == 1)
-                {
-                    spriteNum = 2;
-                }
-                else if(spriteNum == 2)
-                {
-                    spriteNum = 1;
-                }
+            if(spriteCounter <= 12) {
+                spriteNum = 1;
+            }
+            if(spriteCounter > 12 && spriteCounter <= 24) {
+                spriteNum = 2;
+            }
+            if(spriteCounter > 24) {
                 spriteCounter = 0;
+            }
+        }
+        else {
+            standCounter++;
+            if(standCounter == 24) {
+                spriteNum = 3;
+                standCounter = 0;
             }
         }
     }
@@ -131,6 +135,10 @@ public class Player extends Entity
                 {
                     image = up2;
                 }
+                if(spriteNum == 3)
+                {
+                    image = upIdle;
+                }
                 break;
 
             case "down":
@@ -141,6 +149,10 @@ public class Player extends Entity
                 if(spriteNum == 2)
                 {
                     image = down2;
+                }
+                if(spriteNum == 3)
+                {
+                    image = downIdle;
                 }
                 break;
 
@@ -153,6 +165,10 @@ public class Player extends Entity
                 {
                     image = left2;
                 }
+                if(spriteNum == 3)
+                {
+                    image = leftIdle;
+                }
                 break;
 
             case "right":
@@ -163,6 +179,10 @@ public class Player extends Entity
                 if(spriteNum == 2)
                 {
                     image = right2;
+                }
+                if(spriteNum == 3)
+                {
+                    image = rightIdle;
                 }
                 break;
         }
