@@ -16,8 +16,8 @@ public class Player extends Entity
 
     public final int screenX;
     public final int screenY;
-    int hasKey = 0;
-    int hasStrongKey = 0;
+    public int hasKey = 0;
+    public int hasStrongKey = 0;
 
     public Player(GamePanel gp, KeyHandler keyH)
     {
@@ -141,7 +141,7 @@ public class Player extends Entity
                     gp.playSE(1);
                     hasKey++;
                     gp.obj[i] = null;
-                    System.out.println("Key: " + hasKey);
+                    gp.ui.showMessage("Picked up a key!");
                     break;
 
                 case "Door":
@@ -150,15 +150,19 @@ public class Player extends Entity
                         gp.playSE(3);
                         gp.obj[i] = null;
                         hasKey--;
+                        gp.ui.showMessage("Door Unlocked!");
                     }
-                    System.out.println("Key: " + hasKey);
+                    else
+                    {
+                        gp.ui.showMessage("The door is locked!");
+                    }
                     break;
 
                 case "StrongKey":
                     gp.playSE(1);
                     hasStrongKey++;
                     gp.obj[i] = null;
-                    System.out.println("Key: " + hasStrongKey);
+                    gp.ui.showMessage("Picked up a special key!");
                     break;
 
                 case "StrongDoor":
@@ -167,14 +171,25 @@ public class Player extends Entity
                         gp.playSE(3);
                         gp.obj[i] = null;
                         hasStrongKey--;
+                        gp.ui.showMessage("Door Unlocked!");
                     }
-                    System.out.println("Key: " + hasStrongKey);
+                    else
+                    {
+                        gp.ui.showMessage("The door is locked!");
+                    }
                     break;
 
                 case "Speed Potion":
                     gp.playSE(2);
                     speed += 1;
                     gp.obj[i] = null;
+                    gp.ui.showMessage("Drank Speed Potion!");
+                    break;
+
+                case "Treasure":
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    gp.playSE(4);
                     break;
             }
         }
