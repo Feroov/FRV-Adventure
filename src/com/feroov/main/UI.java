@@ -27,8 +27,8 @@ public class UI
         arial_40 = new Font("Arial", Font.PLAIN, 40);
         arial_80 = new Font("Arial", Font.BOLD, 80);
 
-        Key key = new Key();
-        StrongKey keyStrong = new StrongKey();
+        Key key = new Key(gp);
+        StrongKey keyStrong = new StrongKey(gp);
         keyImage = key.image;
         keyStrongImage = keyStrong.image;
     }

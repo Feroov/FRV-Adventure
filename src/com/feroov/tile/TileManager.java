@@ -1,6 +1,7 @@
 package com.feroov.tile;
 
 import com.feroov.main.GamePanel;
+import com.feroov.main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -29,146 +30,75 @@ public class TileManager
 
     public void getTileImage()
     {
+            //_________________ Generic Stuff__________________________
+            setup(0, "grass", false);
+            setup(1, "wall", true);
+            setup(2, "water", true);
+            setup(3, "tree", true);
+            setup(4, "dirt", false);
+            setup(5, "sand", false);
+            //_________________________________________________________
+
+            //____________________ Big Tree ___________________________
+            setup(6, "big_tree_nw", true);
+            setup(7, "big_tree_ne", true);
+            setup(8, "big_tree_sw", true);
+            setup(9, "big_tree_se", true);
+            //_________________________________________________________
+
+
+            //____________________ Road _______________________________
+            setup(10, "dirt_patch", false);
+            //_________________________________________________________
+
+            //__________________ Grass Edges ________________________________
+            setup(11, "grass_edge_down", false);
+            setup(12, "grass_edge_left", false);
+            setup(13, "grass_edge_ne", false);
+            setup(14, "grass_edge_nw", false);
+            setup(15, "grass_edge_right", false);
+            setup(16, "grass_edge_se", false);
+            setup(17, "grass_edge_sw", false);
+            setup(18, "grass_edge_up", false);
+            setup(19, "grass_wall", true);
+            setup(20, "grass_wall_left", true);
+            setup(21, "grass_wall_right", true);
+            setup(22, "grass_wall_down", true);
+            //_______________________________________________________________
+
+            //___________________ Grass Accesories___________________________
+            setup(23, "grass_flower", false);
+            setup(24, "grass_flower2", false);
+            setup(25, "grass_rock", false);
+            setup(26, "grass_trunk", true);
+            //_______________________________________________________________
+
+            //________________________ Sign _________________________________
+            setup(27, "sign_up", true);
+            setup(28, "sign_down", true);
+            //_______________________________________________________________
+
+
+            //_________________ More walls / treasure _______________________
+            setup(29, "door", true);
+            setup(30, "wall_window", true);
+            setup(31, "cobblestone", false);
+            setup(32, "chest", false);
+            setup(33, "wall_up", true);
+            //_____________________________________________________________
+    }
+
+    public void setup(int index, String imageName, boolean collision)
+    {
+        UtilityTool uTool = new UtilityTool();
+
         try
         {
-            //______________________________________ Generic Stuff___________________________________________________________
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass.png")));
-
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/wall.png")));
-            tile[1].collision = true;
-
-            tile[2] = new Tile();
-            tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/water.png")));
-            tile[2].collision = true;
-
-            tile[3] = new Tile();
-            tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/tree.png")));
-            tile[3].collision = true;
-
-            tile[4] = new Tile();
-            tile[4].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/dirt.png")));
-
-            tile[5] = new Tile();
-            tile[5].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/sand.png")));
-            //____________________________________________________________________________________________________________
-
-
-            //______________________________________ Big Tree ___________________________________________________________
-            tile[6] = new Tile();
-            tile[6].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_nw.png")));
-            tile[6].collision = true;
-
-            tile[7] = new Tile();
-            tile[7].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_ne.png")));
-            tile[7].collision = true;
-
-            tile[8] = new Tile();
-            tile[8].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_sw.png")));
-            tile[8].collision = true;
-
-            tile[9] = new Tile();
-            tile[9].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/big_tree_se.png")));
-            tile[9].collision = true;
-            //________________________________________________________________________________________________________________
-
-
-            //______________________________________ Road _______________________________________________________________
-            tile[10] = new Tile();
-            tile[10].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/dirt_patch.png")));
-            //____________________________________________________________________________________________________________
-
-            //______________________________________ Grass Edges _______________________________________________________________
-            tile[11] = new Tile();
-            tile[11].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_down.png")));
-
-            tile[12] = new Tile();
-            tile[12].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_left.png")));
-
-            tile[13] = new Tile();
-            tile[13].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_ne.png")));
-
-            tile[14] = new Tile();
-            tile[14].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_nw.png")));
-
-            tile[15] = new Tile();
-            tile[15].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_right.png")));
-
-            tile[16] = new Tile();
-            tile[16].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_se.png")));
-
-            tile[17] = new Tile();
-            tile[17].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_sw.png")));
-
-            tile[18] = new Tile();
-            tile[18].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_edge_up.png")));
-
-            tile[19] = new Tile();
-            tile[19].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall.png")));
-            tile[19].collision = true;
-
-            tile[20] = new Tile();
-            tile[20].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_left.png")));
-            tile[20].collision = true;
-
-            tile[21] = new Tile();
-            tile[21].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_right.png")));
-            tile[21].collision = true;
-
-            tile[22] = new Tile();
-            tile[22].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_wall_down.png")));
-            tile[22].collision = true;
-            //____________________________________________________________________________________________________________
-
-            //______________________________________ Grass Accesories____________________________________________________
-
-            tile[23] = new Tile();
-            tile[23].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_flower.png")));
-
-            tile[24] = new Tile();
-            tile[24].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_flower2.png")));
-
-            tile[25] = new Tile();
-            tile[25].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_rock.png")));
-
-            tile[26] = new Tile();
-            tile[26].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass_trunk.png")));
-            tile[26].collision = true;
-            //____________________________________________________________________________________________________________
-
-
-            //_________________________________________ Sign ______________________________________________________
-            tile[27] = new Tile();
-            tile[27].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/sign_up.png")));
-            tile[27].collision = true;
-
-            tile[28] = new Tile();
-            tile[28].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/sign_down.png")));
-            tile[28].collision = true;
-            //____________________________________________________________________________________________________________
-
-
-            //________________________________________ More walls / treasure ____________________________________________
-            tile[29] = new Tile();
-            tile[29].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/door.png")));
-            tile[29].collision = true;
-
-            tile[30] = new Tile();
-            tile[30].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/wall_window.png")));
-            tile[30].collision = true;
-
-            tile[31] = new Tile();
-            tile[31].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/cobblestone.png")));
-
-            tile[32] = new Tile();
-            tile[32].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/chest.png")));
-
-            tile[33] = new Tile();
-            tile[33].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/wall_up.png")));
-            tile[33].collision = true;
-            //____________________________________________________________________________________________________________
-
+            tile[index] = new Tile();
+            tile[index].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/" +
+                    imageName + ".png")));
+            tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+            tile[index].collision = collision;
         }catch(IOException e) { e.printStackTrace(); }
     }
 
@@ -225,7 +155,7 @@ public class TileManager
                worldY + gp.tileSize> gp.player.worldY - gp.player.screenY &&
                worldY - gp.tileSize< gp.player.worldY + gp.player.screenY)
             {
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                g2.drawImage(tile[tileNum].image, screenX, screenY, null);
             }
 
 

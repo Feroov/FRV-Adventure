@@ -1,13 +1,18 @@
 package com.feroov.object;
 
+import com.feroov.main.GamePanel;
+
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Objects;
 
 public class Chest extends SuperObject
 {
-    public Chest()
+    GamePanel gp;
+
+    public Chest(GamePanel gp)
     {
+        this.gp = gp;
         name = "Treasure";
         try
         {

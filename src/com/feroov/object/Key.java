@@ -1,13 +1,18 @@
 package com.feroov.object;
 
+import com.feroov.main.GamePanel;
+
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Objects;
 
 public class Key extends SuperObject
 {
-    public Key()
+    GamePanel gp;
+
+    public Key(GamePanel gp)
     {
+        this.gp = gp;
         name = "Key";
         try
         {
