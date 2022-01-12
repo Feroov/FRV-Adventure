@@ -84,8 +84,10 @@ public class UI
 
             // Timer
             playTime += (double) 1 / 60;
-            g2.drawString("Time: " + dFormat.format(playTime), 814, 48);
+            g2.drawString("Time: " + dFormat.format(playTime), 410, 48);
 
+            g2.setFont(arial_40);
+            g2.setColor(Color.YELLOW);
             // Messages / notifications
             if(messageOn)
             {
