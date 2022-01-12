@@ -151,7 +151,7 @@ public class TileManager
 
             //________________________________________ More walls / treasure ____________________________________________
             tile[29] = new Tile();
-            tile[29].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/iron_door.png")));
+            tile[29].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/door.png")));
             tile[29].collision = true;
 
             tile[30] = new Tile();
@@ -162,7 +162,7 @@ public class TileManager
             tile[31].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/cobblestone.png")));
 
             tile[32] = new Tile();
-            tile[32].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/treasure.png")));
+            tile[32].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/chest.png")));
 
             tile[33] = new Tile();
             tile[33].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/wall_up.png")));

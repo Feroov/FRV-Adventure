@@ -22,6 +22,7 @@ public class Main
         icon = new ImageIcon("res/frvlogo.png");
         window.setIconImage(icon.getImage());
 
+        gamePanel.setupGame();
         gamePanel.startGameThread();
     }
 }
