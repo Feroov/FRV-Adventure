@@ -13,5 +13,6 @@ public class Chest extends SuperObject
         {
             image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/objects/treasure.png")));
         }catch(IOException e) { e.printStackTrace(); }
+        collision = true;
     }
 }
