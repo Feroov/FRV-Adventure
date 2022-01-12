@@ -29,7 +29,7 @@ public class Player extends Entity
 
         solidArea = new Rectangle();
         solidArea.x = 8;
-        solidArea.y = 16;
+        solidArea.y = 27;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         solidArea.width = 32;
@@ -43,7 +43,7 @@ public class Player extends Entity
     {
         worldX = gp.tileSize * 43;
         worldY = gp.tileSize * 51;
-        speed = 24;
+        speed = 4;
         direction = "left";
     }
 
@@ -138,6 +138,7 @@ public class Player extends Entity
             switch(objectName)
             {
                 case "Key":
+                    gp.playSE(1);
                     hasKey++;
                     gp.obj[i] = null;
                     System.out.println("Key: " + hasKey);
@@ -146,6 +147,7 @@ public class Player extends Entity
                 case "Door":
                     if(hasKey > 0)
                     {
+                        gp.playSE(3);
                         gp.obj[i] = null;
                         hasKey--;
                     }
@@ -153,6 +155,7 @@ public class Player extends Entity
                     break;
 
                 case "StrongKey":
+                    gp.playSE(1);
                     hasStrongKey++;
                     gp.obj[i] = null;
                     System.out.println("Key: " + hasStrongKey);
@@ -161,10 +164,17 @@ public class Player extends Entity
                 case "StrongDoor":
                     if(hasStrongKey > 0)
                     {
+                        gp.playSE(3);
                         gp.obj[i] = null;
                         hasStrongKey--;
                     }
                     System.out.println("Key: " + hasStrongKey);
+                    break;
+
+                case "Speed Potion":
+                    gp.playSE(2);
+                    speed += 1;
+                    gp.obj[i] = null;
                     break;
             }
         }
