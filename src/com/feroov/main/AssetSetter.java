@@ -1,9 +1,6 @@
 package com.feroov.main;
 
-import com.feroov.object.Chest;
-import com.feroov.object.Door;
-import com.feroov.object.Key;
-import com.feroov.object.PowerUpSpeed;
+import com.feroov.object.*;
 
 public class AssetSetter
 {
@@ -16,7 +13,7 @@ public class AssetSetter
 
     public void setObject()
     {
-        gp.obj[0] = new Key();
+        gp.obj[0] = new StrongKey();
         gp.obj[0].worldX = 21 * gp.tileSize;
         gp.obj[0].worldY = 23 * gp.tileSize;
 
@@ -44,7 +41,7 @@ public class AssetSetter
         gp.obj[6].worldX = 21 * gp.tileSize;
         gp.obj[6].worldY = 27 * gp.tileSize;
 
-        gp.obj[7] = new Door();
+        gp.obj[7] = new StrongDoor();
         gp.obj[7].worldX = 40 * gp.tileSize;
         gp.obj[7].worldY = 75 * gp.tileSize;
 

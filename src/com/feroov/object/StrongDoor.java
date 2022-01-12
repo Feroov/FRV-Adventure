@@ -4,14 +4,14 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Objects;
 
-public class Door extends SuperObject
+public class StrongDoor extends SuperObject
 {
-    public Door()
+    public StrongDoor()
     {
-        name = "Door";
+        name = "StrongDoor";
         try
         {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/objects/iron_door.png")));
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/objects/strong_door.png")));
         }catch(IOException e) { e.printStackTrace(); }
         collision = true;
     }

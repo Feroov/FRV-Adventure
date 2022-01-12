@@ -16,6 +16,8 @@ public class Player extends Entity
 
     public final int screenX;
     public final int screenY;
+    int hasKey = 0;
+    int hasStrongKey = 0;
 
     public Player(GamePanel gp, KeyHandler keyH)
     {
@@ -28,6 +30,8 @@ public class Player extends Entity
         solidArea = new Rectangle();
         solidArea.x = 8;
         solidArea.y = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 32;
         solidArea.height = 32;
 
@@ -86,8 +90,13 @@ public class Player extends Entity
                 direction = "right";
             }
 
+            // Tile collision check
             collisionOn = false;
             gp.cChecker.checkTile(this);
+
+            // Object collision check
+            int objIndex = gp.cChecker.checkObject(this, true);
+            pickUpObject(objIndex);
 
             if(collisionOn == false)
             {
@@ -116,6 +125,47 @@ public class Player extends Entity
             if(standCounter == 24) {
                 spriteNum = 3;
                 standCounter = 0;
+            }
+        }
+    }
+
+    public void pickUpObject(int i)
+    {
+        if(i != 999)
+        {
+            String objectName = gp.obj[i].name;
+
+            switch(objectName)
+            {
+                case "Key":
+                    hasKey++;
+                    gp.obj[i] = null;
+                    System.out.println("Key: " + hasKey);
+                    break;
+
+                case "Door":
+                    if(hasKey > 0)
+                    {
+                        gp.obj[i] = null;
+                        hasKey--;
+                    }
+                    System.out.println("Key: " + hasKey);
+                    break;
+
+                case "StrongKey":
+                    hasStrongKey++;
+                    gp.obj[i] = null;
+                    System.out.println("Key: " + hasStrongKey);
+                    break;
+
+                case "StrongDoor":
+                    if(hasStrongKey > 0)
+                    {
+                        gp.obj[i] = null;
+                        hasStrongKey--;
+                    }
+                    System.out.println("Key: " + hasStrongKey);
+                    break;
             }
         }
     }
