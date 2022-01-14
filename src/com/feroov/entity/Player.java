@@ -40,7 +40,7 @@ public class Player extends Entity
     {
         worldX = gp.tileSize * 43;
         worldY = gp.tileSize * 51;
-        speed = 24;
+        speed = 4;
         direction = "left";
     }
 
@@ -197,8 +197,13 @@ public class Player extends Entity
     {
         if(i != 999)
         {
-
+            if(gp.keyH.enterPressed == true)
+            {
+                gp.gameState = gp.dialogueState;
+                gp.npc[i].speak();
+            }
         }
+        gp.keyH.enterPressed = false;
     }
 
     public void draw(Graphics2D g2)

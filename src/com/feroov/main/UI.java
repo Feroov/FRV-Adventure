@@ -18,6 +18,7 @@ public class UI
     public String message = "";
     public int messageCounter = 0;
     public boolean gameFinished = false;
+    public String currentDialogue = "";
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -58,7 +59,7 @@ public class UI
             drawPauseScreen();
         }
 
-
+        // Finishing game
         if(gameFinished)
         {
             g2.setFont(arial_40);
@@ -119,6 +120,39 @@ public class UI
                 }
             }
         }
+
+        if(gp.gameState == gp.dialogueState){ drawDialogueScreen(); }
+    }
+
+    private void drawDialogueScreen()
+    {
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize / 2;
+        int width = gp.screenWidth - (gp.tileSize * 4);
+        int height = gp.tileSize * 4;
+
+        drawSubWindow(x, y, width, height);
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28F));
+
+
+        for(String line : currentDialogue.split("\n"))
+        {
+            g2.drawString(currentDialogue, 200, 70);
+            y += 40;
+        }
+    }
+
+    public void drawSubWindow(int x, int y, int width, int height)
+    {
+        Color c = new Color(0,0,0, 200);
+        g2.setColor(c);
+        g2.fillRoundRect(180, 20, width, height, 35, 35);
+
+        c = new Color(255,255,255);
+        g2.setColor(Color.WHITE);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(180, 20, width, height, 47,47);
     }
 
     public void drawPauseScreen()

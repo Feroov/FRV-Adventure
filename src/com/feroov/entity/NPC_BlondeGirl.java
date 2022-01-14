@@ -15,6 +15,7 @@ public class NPC_BlondeGirl extends Entity
         speed = 1;
 
         getImage();
+        setDialogue();
     }
 
     public void getImage()
@@ -27,6 +28,20 @@ public class NPC_BlondeGirl extends Entity
         left2 = setup("/npc/blonde_girl_left_2");
         right1 = setup("/npc/blonde_girl_right_1");
         right2 = setup("/npc/blonde_girl_right_2");
+    }
+
+    public void setDialogue()
+    {
+        dialogues[0] = "Hello there!";
+        dialogues[1] = "There are evil monsters all over the island!";
+        dialogues[2] = "Legend says that there is a treasure out there!";
+        dialogues[3] = "Don't get lost in the woods!";
+        dialogues[4] = "There are speed potions hidden around!";
+    }
+
+    public void speak()
+    {
+        super.speak();
     }
 
     public void setAction()
