@@ -1,5 +1,6 @@
 package com.feroov.main;
 
+import com.feroov.entity.Entity;
 import com.feroov.entity.Player;
 import com.feroov.object.SuperObject;
 import com.feroov.tile.TileManager;
@@ -23,12 +24,13 @@ public class GamePanel extends JPanel implements Runnable
     public final int maxWorldCol = 100;
     public final int maxWorldRow = 100;
 
+
     // FPS
     int FPS = 60;
 
     // System stuff
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();
     public CollisionChecker cChecker = new CollisionChecker(this);
@@ -39,6 +41,12 @@ public class GamePanel extends JPanel implements Runnable
     // Entity and Objects
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
+    public Entity npc[] = new Entity[10];
+
+    // Game state
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
 
     public GamePanel()
     {
@@ -52,8 +60,10 @@ public class GamePanel extends JPanel implements Runnable
     public void setupGame()
     {
         aSetter.setObject();
-
+        aSetter.setNPC();
         playMusic(0);
+
+        gameState = playState;
     }
 
     public void startGameThread()
@@ -86,7 +96,20 @@ public class GamePanel extends JPanel implements Runnable
 
     public void update()
     {
-        player.update();
+        if(gameState == playState) {
+            // Player
+            player.update();
+
+            for(int i = 0; i < npc.length; i++){
+                if(npc[i] != null){
+                    npc[i].update();
+                }
+            }
+        }
+        if(gameState == pauseState)
+        {
+
+        }
     }
 
     public void paintComponent(Graphics g)
@@ -104,12 +127,18 @@ public class GamePanel extends JPanel implements Runnable
                 obj[i].draw(g2, this);
             }
         }
-        // Player / Entities
+        // Npcs / Entities
+        for(int i = 0; i < npc.length; i++)
+        {
+            if(npc[i] != null)
+            {
+                npc[i].draw(g2);
+            }
+        }
+        // Player
         player.draw(g2);
-
         // UI
         ui.draw(g2);
-
         g2.dispose();
     }
 
