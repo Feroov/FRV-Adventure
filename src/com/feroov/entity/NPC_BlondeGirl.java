@@ -35,7 +35,7 @@ public class NPC_BlondeGirl extends Entity
         dialogues[0] = "Hello there!";
         dialogues[1] = "There are evil monsters all over the island!";
         dialogues[2] = "Legend says that there is a treasure out there!";
-        dialogues[3] = "Don't get lost in the woods!";
+        dialogues[3] = "Dont get lost in the woods!";
         dialogues[4] = "There are speed potions hidden around!";
     }
 

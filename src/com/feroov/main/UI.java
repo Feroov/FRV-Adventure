@@ -5,13 +5,15 @@ import com.feroov.object.StrongKey;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 
 public class UI
 {
     GamePanel gp;
     Graphics2D g2;
-    Font arial_40, arial_80;
+    Font eightBit, arial_40, arial_80;
     BufferedImage keyImage;
     BufferedImage keyStrongImage;
     public boolean messageOn = false;
@@ -19,6 +21,7 @@ public class UI
     public int messageCounter = 0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
+    public int commandNum = 0;
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -26,8 +29,16 @@ public class UI
     public UI(GamePanel gp)
     {
         this.gp = gp;
+
         arial_40 = new Font("Arial", Font.PLAIN, 40);
-        arial_80 = new Font("Arial", Font.BOLD, 80);
+        arial_80 = new Font("Arial", Font.PLAIN, 80);
+        InputStream is = getClass().getResourceAsStream("/font/8bit.ttf");
+        try
+        {
+            eightBit = Font.createFont(Font.TRUETYPE_FONT, is);
+        }
+        catch(FontFormatException | IOException e){ e.printStackTrace(); }
+
 
         Key key = new Key(gp);
         StrongKey keyStrong = new StrongKey(gp);
@@ -40,6 +51,47 @@ public class UI
         message = text;
         messageOn = true;
     }
+    private void drawTitleScreen()
+    {
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
+        String text = "FRV Adventure";
+        int x = getXForCenteredText(text);
+        int y = gp.tileSize * 3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text, x+5, y+5);
+
+        g2.setColor(Color.WHITE);
+        g2.drawString(text, x, y);
+
+        x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
+        g2.drawImage(gp.player.down1, x, 250, gp.tileSize * 2, gp.tileSize * 2, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+
+        text = "START GAME";
+        x = getXForCenteredText(text);
+        g2.drawString(text, x, 480);
+        if(commandNum == 0)
+        {
+            g2.drawString(">", 345, 480);
+        }
+        text = "HOW TO PLAY";
+        x = getXForCenteredText(text);
+        g2.drawString(text, x, 540);
+        if(commandNum == 1)
+        {
+            g2.drawString(">", 330, 540);
+        }
+
+        text = "QUIT";
+        x = getXForCenteredText(text);
+        g2.drawString(text, x, 600);
+        if(commandNum == 2)
+        {
+            g2.drawString(">", 420, 600);
+        }
+    }
 
     public void draw(Graphics2D g2)
     {
@@ -47,6 +99,10 @@ public class UI
         this.g2 = g2;
         g2.setFont(arial_40);
         g2.setColor(Color.WHITE);
+        if(gp.gameState == gp.pauseState)
+        {
+            drawPauseScreen();
+        }
 
         if(gp.gameState == gp.playState)
         {
@@ -54,10 +110,9 @@ public class UI
             playTime += (double) 1 / 60;
             g2.drawString("Time: " + dFormat.format(playTime), 410, 48);
         }
-        if(gp.gameState == gp.pauseState)
-        {
-            drawPauseScreen();
-        }
+
+        // Title State
+        if(gp.gameState == gp.titleState){ drawTitleScreen(); }
 
         // Finishing game
         if(gameFinished)
@@ -92,7 +147,7 @@ public class UI
 
             gp.gameThread = null;
         }
-        else
+        if(gp.gameState == gp.playState)
         {
             g2.setFont(arial_40);
             g2.setColor(Color.WHITE);
@@ -103,7 +158,7 @@ public class UI
 
 
 
-            g2.setFont(arial_40);
+            g2.setFont(eightBit);
             g2.setColor(Color.YELLOW);
             // Messages / notifications
             if(messageOn)
@@ -120,9 +175,11 @@ public class UI
                 }
             }
         }
-
+        g2.setFont(eightBit);
         if(gp.gameState == gp.dialogueState){ drawDialogueScreen(); }
     }
+
+
 
     private void drawDialogueScreen()
     {
