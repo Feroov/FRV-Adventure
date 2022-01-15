@@ -155,7 +155,7 @@ public class Player extends Entity
 
         if(life == 0)
         {
-            //TODO shit
+            //TODO game over stuff
         }
 
         if(invincible == true)
