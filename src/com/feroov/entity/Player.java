@@ -48,7 +48,7 @@ public class Player extends Entity
         direction = "down";
 
         // Player Status
-        maxLife = 8;
+        maxLife = 12;
         life = maxLife;
     }
 
@@ -155,7 +155,7 @@ public class Player extends Entity
 
         if(life == 0)
         {
-            //TODO game over stuff
+            System.exit(0);
         }
 
         if(invincible == true)
@@ -300,6 +300,13 @@ public class Player extends Entity
                     speed += 1;
                     gp.obj[i] = null;
                     gp.ui.showMessage("Drank Speed Potion!");
+                    break;
+
+                case "health":
+                    gp.playSE(2);
+                    life += 2;
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("Drank Health Potion!");
                     break;
 
                 case "Treasure":

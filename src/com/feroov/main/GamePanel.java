@@ -43,9 +43,9 @@ public class GamePanel extends JPanel implements Runnable
 
     // Entity and Objects
     public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[20];
+    public SuperObject obj[] = new SuperObject[30];
     public Entity npc[] = new Entity[10];
-    public Entity monster[] = new Entity[30];
+    public Entity monster[] = new Entity[60];
     ArrayList<Entity> entityList = new ArrayList<>();
 
     // Game state
@@ -188,26 +188,6 @@ public class GamePanel extends JPanel implements Runnable
                     return result;
                 }
             });
-            /**
-            // Object
-
-            // Npcs / Entities
-            for(int i = 0; i < npc.length; i++)
-            {
-                if(npc[i] != null)
-                {
-                    npc[i].draw(g2);
-                }
-            }
-
-            for(int i = 0; i < monster.length; i++)
-            {
-                if(monster[i] != null)
-                {
-                    monster[i].draw(g2);
-                }
-            }
-             **/
             // Player
             player.draw(g2);
 

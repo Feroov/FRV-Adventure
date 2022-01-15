@@ -5,18 +5,18 @@ import com.feroov.main.GamePanel;
 
 import java.util.Random;
 
-public class Skeleton extends Entity
+public class Goblin extends Entity
 {
     GamePanel gp;
-    public Skeleton(GamePanel gp)
+    public Goblin(GamePanel gp)
     {
         super(gp);
         this.gp = gp;
         type = 2;
-        name = "Skeleton";
+        name = "Goblin";
         direction = "down";
-        speed = 1;
-        maxLife = 3;
+        speed = 3;
+        maxLife = 5;
         life = maxLife;
 
         solidArea.x = 3;
@@ -31,14 +31,14 @@ public class Skeleton extends Entity
 
     public void getImage()
     {
-        up1 = setup("/monster/skeleton_up_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/monster/skeleton_up_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/monster/skeleton_down_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/monster/skeleton_down_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/monster/skeleton_left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/monster/skeleton_left_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/monster/skeleton_right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/monster/skeleton_right_2", gp.tileSize, gp.tileSize);
+        up1 = setup("/monster/goblin_up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/monster/goblin_up_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/monster/goblin_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/monster/goblin_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/monster/goblin_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/monster/goblin_left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/monster/goblin_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/monster/goblin_right_2", gp.tileSize, gp.tileSize);
     }
 
     public void setAction()

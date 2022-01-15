@@ -22,6 +22,7 @@ public class UI
     public boolean messageOn = false;
     public String message = "";
     public int messageCounter = 0;
+    public int closeCounter = 0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
     public int commandNum = 0;
@@ -166,12 +167,12 @@ public class UI
         {
             // Timer
             playTime += (double) 1 / 60;
-            g2.drawString("Time: " + dFormat.format(playTime), 410, 48);
             drawPlayerLife();
         }
 
         // Title State
         if(gp.gameState == gp.titleState){ drawTitleScreen(); }
+
 
         // Finishing game
         if(gameFinished)
@@ -243,7 +244,7 @@ public class UI
 
     private void drawPlayerLife()
     {
-        int x = gp.tileSize * 11;
+        int x = 620;
         int y = gp.tileSize / 3;
         int i = 0;
 
@@ -255,7 +256,7 @@ public class UI
         }
 
         // Reset
-        x = gp.tileSize * 11;
+        x = 620;
         y = gp.tileSize / 3;
         i = 0;
 
