@@ -75,7 +75,47 @@ public class AssetSetter
     public void setMonster()
     {
         gp.monster[0] = new Skeleton(gp);
-        gp.monster[0].worldX = gp.tileSize * 45;
-        gp.monster[0].worldY = gp.tileSize * 50;
+        gp.monster[0].worldX = gp.tileSize * 19;
+        gp.monster[0].worldY = gp.tileSize * 23;
+
+        gp.monster[1] = new Skeleton(gp);
+        gp.monster[1].worldX = gp.tileSize * 20;
+        gp.monster[1].worldY = gp.tileSize * 23;
+
+        gp.monster[2] = new Skeleton(gp);
+        gp.monster[2].worldX = gp.tileSize * 21;
+        gp.monster[2].worldY = gp.tileSize * 23;
+
+        gp.monster[3] = new Skeleton(gp);
+        gp.monster[3].worldX = gp.tileSize * 22;
+        gp.monster[3].worldY = gp.tileSize * 23;
+
+        gp.monster[4] = new Skeleton(gp);
+        gp.monster[4].worldX = gp.tileSize * 23;
+        gp.monster[4].worldY = gp.tileSize * 23;
+
+        gp.monster[5] = new Skeleton(gp);
+        gp.monster[5].worldX = gp.tileSize * 24;
+        gp.monster[5].worldY = gp.tileSize * 23;
+
+        gp.monster[6] = new Skeleton(gp);
+        gp.monster[6].worldX = gp.tileSize * 38;
+        gp.monster[6].worldY = gp.tileSize * 73;
+
+        gp.monster[7] = new Skeleton(gp);
+        gp.monster[7].worldX = gp.tileSize * 38;
+        gp.monster[7].worldY = gp.tileSize * 73;
+
+        gp.monster[8] = new Skeleton(gp);
+        gp.monster[8].worldX = gp.tileSize * 39;
+        gp.monster[8].worldY = gp.tileSize * 73;
+
+        gp.monster[9] = new Skeleton(gp);
+        gp.monster[9].worldX = gp.tileSize * 40;
+        gp.monster[9].worldY = gp.tileSize * 73;
+
+        gp.monster[10] = new Skeleton(gp);
+        gp.monster[10].worldX = gp.tileSize * 41;
+        gp.monster[10].worldY = gp.tileSize * 73;
     }
 }
