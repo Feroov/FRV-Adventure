@@ -115,7 +115,7 @@ public class UI
             int y = gp.tileSize * 3;
             g2.drawString(text, x, y);
 
-            String text2 = "Press P to pause";
+            String text2 = " \"P\" to pause the game, \"Enter\" to Attack/Interact ";
             int x2 = getXForCenteredText(text2);
             int y2 = gp.tileSize * 4;
             g2.drawString(text2, x2, y2);
@@ -131,7 +131,7 @@ public class UI
             g2.drawString(text5, 150, y5);
 
             g2.setColor(Color.yellow);
-            String text4 = "Press down and enter to go back";
+            String text4 = "Press \"Down\" + \"Enter\" to go back";
             int x4 = getXForCenteredText(text4);
             int y4 = gp.tileSize * 9;
             g2.drawString(text4, x4, y4);

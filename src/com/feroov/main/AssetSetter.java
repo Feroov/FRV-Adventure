@@ -1,6 +1,7 @@
 package com.feroov.main;
 
 import com.feroov.entity.NPC_BlondeGirl;
+import com.feroov.monster.Skeleton;
 import com.feroov.object.*;
 
 public class AssetSetter
@@ -53,6 +54,15 @@ public class AssetSetter
         gp.obj[9] = new PowerUpSpeed(gp);
         gp.obj[9].worldX = 11 * gp.tileSize;
         gp.obj[9].worldY = 34 * gp.tileSize;
+
+        gp.obj[10] = new PowerUpSpeed(gp);
+        gp.obj[10].worldX = 44 * gp.tileSize;
+        gp.obj[10].worldY = 14 * gp.tileSize;
+
+        gp.obj[11] = new PowerUpSpeed(gp);
+        gp.obj[11].worldX = 86 * gp.tileSize;
+        gp.obj[11].worldY = 13 * gp.tileSize;
+
     }
 
     public void setNPC()
@@ -60,5 +70,12 @@ public class AssetSetter
         gp.npc[0] = new NPC_BlondeGirl(gp);
         gp.npc[0].worldX = gp.tileSize * 45;
         gp.npc[0].worldY = gp.tileSize * 52;
+    }
+
+    public void setMonster()
+    {
+        gp.monster[0] = new Skeleton(gp);
+        gp.monster[0].worldX = gp.tileSize * 45;
+        gp.monster[0].worldY = gp.tileSize * 50;
     }
 }
