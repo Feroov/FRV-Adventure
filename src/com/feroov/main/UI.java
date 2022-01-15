@@ -22,6 +22,7 @@ public class UI
     public boolean gameFinished = false;
     public String currentDialogue = "";
     public int commandNum = 0;
+    public int titleScreenState = 0;
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -53,44 +54,91 @@ public class UI
     }
     private void drawTitleScreen()
     {
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
-        String text = "FRV Adventure";
-        int x = getXForCenteredText(text);
-        int y = gp.tileSize * 3;
-
-        g2.setColor(Color.gray);
-        g2.drawString(text, x+5, y+5);
-
-        g2.setColor(Color.WHITE);
-        g2.drawString(text, x, y);
-
-        x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
-        g2.drawImage(gp.player.down1, x, 250, gp.tileSize * 2, gp.tileSize * 2, null);
-
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
-
-        text = "START GAME";
-        x = getXForCenteredText(text);
-        g2.drawString(text, x, 480);
-        if(commandNum == 0)
+        if(titleScreenState == 0)
         {
-            g2.drawString(">", 345, 480);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
+            String text = "FRV Adventure";
+            int x = getXForCenteredText(text);
+            int y = gp.tileSize * 3;
+
+            g2.setColor(Color.gray);
+            g2.drawString(text, x+5, y+5);
+
+            g2.setColor(Color.WHITE);
+            g2.drawString(text, x, y);
+
+            x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
+            g2.drawImage(gp.player.down1, x, 250, gp.tileSize * 2, gp.tileSize * 2, null);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+
+            text = "START GAME";
+            x = getXForCenteredText(text);
+            g2.drawString(text, x, 480);
+            if(commandNum == 0)
+            {
+                g2.drawString(">", 345, 480);
+            }
+            text = "HOW TO PLAY";
+            x = getXForCenteredText(text);
+            g2.drawString(text, x, 540);
+            if(commandNum == 1)
+            {
+                g2.drawString(">", 330, 540);
+            }
+
+            text = "QUIT";
+            x = getXForCenteredText(text);
+            g2.drawString(text, x, 600);
+            if(commandNum == 2)
+            {
+                g2.drawString(">", 420, 600);
+            }
         }
-        text = "HOW TO PLAY";
-        x = getXForCenteredText(text);
-        g2.drawString(text, x, 540);
-        if(commandNum == 1)
+        else if(titleScreenState == 1)
         {
-            g2.drawString(">", 330, 540);
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(32F));
+
+
+            String text = "Move around with W, A, S, D";
+            int x = getXForCenteredText(text);
+            int y = gp.tileSize * 3;
+            g2.drawString(text, x, y);
+
+            String text2 = "Press P to pause";
+            int x2 = getXForCenteredText(text2);
+            int y2 = gp.tileSize * 4;
+            g2.drawString(text2, x2, y2);
+
+            String text3 = "The game is pretty simple, find all the keys and the treasure!";
+            int x3 = getXForCenteredText(text3);
+            int y3 = gp.tileSize * 5;
+            g2.drawString(text3, x3, y3);
+
+            String text5 = "To talk to NPC's walk towards them and press enter!";
+            int x5 = getXForCenteredText(text3);
+            int y5 = gp.tileSize * 6;
+            g2.drawString(text5, 150, y5);
+
+            g2.setColor(Color.yellow);
+            String text4 = "Press down and enter to go back";
+            int x4 = getXForCenteredText(text4);
+            int y4 = gp.tileSize * 9;
+            g2.drawString(text4, x4, y4);
+
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(42F));
+            text = "Back";
+            x = getXForCenteredText(text);
+            y += gp.tileSize * 7;
+            g2.drawString(text, x, y);
+            if(commandNum == 0)
+            {
+                g2.drawString(">", x-gp.tileSize, y);
+            }
         }
 
-        text = "QUIT";
-        x = getXForCenteredText(text);
-        g2.drawString(text, x, 600);
-        if(commandNum == 2)
-        {
-            g2.drawString(">", 420, 600);
-        }
     }
 
     public void draw(Graphics2D g2)
