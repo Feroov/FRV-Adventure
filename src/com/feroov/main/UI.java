@@ -1,7 +1,9 @@
 package com.feroov.main;
 
+import com.feroov.object.Heart;
 import com.feroov.object.Key;
 import com.feroov.object.StrongKey;
+import com.feroov.object.SuperObject;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -16,6 +18,7 @@ public class UI
     Font eightBit, arial_40, arial_80;
     BufferedImage keyImage;
     BufferedImage keyStrongImage;
+    BufferedImage heart_full, heart_half, heart_empty;
     public boolean messageOn = false;
     public String message = "";
     public int messageCounter = 0;
@@ -45,6 +48,12 @@ public class UI
         StrongKey keyStrong = new StrongKey(gp);
         keyImage = key.image;
         keyStrongImage = keyStrong.image;
+
+        // Hud Objects
+        SuperObject heart = new Heart(gp);
+        heart_full = heart.image;
+        heart_half = heart.image2;
+        heart_empty = heart.image3;
     }
 
     public void showMessage(String text)
@@ -150,6 +159,7 @@ public class UI
         if(gp.gameState == gp.pauseState)
         {
             drawPauseScreen();
+            drawPlayerLife();
         }
 
         if(gp.gameState == gp.playState)
@@ -157,6 +167,7 @@ public class UI
             // Timer
             playTime += (double) 1 / 60;
             g2.drawString("Time: " + dFormat.format(playTime), 410, 48);
+            drawPlayerLife();
         }
 
         // Title State
@@ -224,9 +235,44 @@ public class UI
             }
         }
         g2.setFont(eightBit);
-        if(gp.gameState == gp.dialogueState){ drawDialogueScreen(); }
+        if(gp.gameState == gp.dialogueState)
+        {
+            drawDialogueScreen();
+        }
     }
 
+    private void drawPlayerLife()
+    {
+        int x = gp.tileSize * 11;
+        int y = gp.tileSize / 3;
+        int i = 0;
+
+        while(i < gp.player.maxLife / 2)
+        {
+            g2.drawImage(heart_empty, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+
+        // Reset
+        x = gp.tileSize * 11;
+        y = gp.tileSize / 3;
+        i = 0;
+
+        // Current Life
+        while(i < gp.player.life)
+        {
+            g2.drawImage(heart_half, x, y, null);
+            i++;
+            if(i < gp.player.life)
+            {
+                g2.drawImage(heart_full, x, y, null);
+            }
+            i++;
+            x += gp.tileSize;
+        }
+
+    }
 
 
     private void drawDialogueScreen()
