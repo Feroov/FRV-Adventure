@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FRV Adventure:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FRV_Adventure_jar</output-path>
+    <root id="archive" name="FRV Adventure.jar">
+      <element id="module-output" name="FRV Adventure" />
+    </root>
+  </artifact>
+</component>

@@ -16,7 +16,7 @@ public class SkeletonBoss extends Entity
         name = "Skeleton Boss";
         direction = "down";
         speed = 1;
-        maxLife = 30;
+        maxLife = 12;
         life = maxLife;
 
         solidArea.x = 3;
